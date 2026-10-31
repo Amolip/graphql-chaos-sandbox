@@ -1,0 +1,13 @@
+{
+  "name": "graphql-chaos-sandbox",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GraphQL Performance & Chaos Engineering Sandbox — Angular 22 Signals + SVG Flamegraphs, Material AST Tree/Stepper, and NestJS Apollo Tracing & Complexity Plugins",
+  "scripts": {
+    "api": "npm run start:dev --prefix api",
+    "web": "npm start --prefix web -- --port 4201",
+    "build:api": "npm run build --prefix api",
+    "build:web": "npm run build --prefix web -- --base-href /graphql-chaos-sandbox/",
+    "test:api": "npm test --prefix api"
+  }
+}

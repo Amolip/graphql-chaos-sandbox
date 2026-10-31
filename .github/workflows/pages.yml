@@ -1,0 +1,33 @@
+name: Deploy GraphQL Chaos Sandbox Demo
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install & Test NestJS GraphQL API
+        working-directory: api
+        run: |
+          npm install --legacy-peer-deps
+          npm test
+          npm run build
+      - name: Install & Build Angular 22 Frontend
+        working-directory: web
+        run: |
+          npm install --legacy-peer-deps
+          node --require ./node-compat.cjs ./node_modules/@angular/cli/bin/ng.js build --configuration production --base-href /graphql-chaos-sandbox/
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: web/dist/web/browser

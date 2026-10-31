@@ -1,0 +1,21 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #060911;
+  color: #e2e8f0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Override Angular Material tabs & stepper for dark DevTools aesthetic */
+.mat-mdc-tab-group {
+  --mdc-tab-indicator-active-indicator-color: #38bdf8;
+  --mat-tab-header-active-label-text-color: #38bdf8;
+  --mat-tab-header-inactive-label-text-color: #94a3b8;
+  --mat-tab-header-active-focus-label-text-color: #38bdf8;
+  --mat-tab-header-active-hover-label-text-color: #38bdf8;
+}
+
+.mat-step-header .mat-step-label.mat-step-label-active,
+.mat-step-header .mat-step-label {
+  color: #e2e8f0 !important;
+}
